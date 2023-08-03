@@ -1,49 +1,40 @@
 import React, { useState } from 'react';
-import firebase from 'firebase/app';
-import 'firebase/database';
+import { ref, push } from 'firebase/database';
+import { database } from '../components/firebase.jsx';
 
-const DataForm = () => {
+ const DataForm = () => {
   const [name, setName] = useState('');
   const [address, setAddress] = useState('');
   const [tel, setTel] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleFormSubmit = (e) => {
     e.preventDefault();
 
-    // Prepare the data object to be added to the database
-    const newData = {
+     const hospitalsRef = ref(database, 'hospitals');
+  push(hospitalsRef, {
       name: name,
       address: address,
-      tel: parseInt(tel), // Assuming age is a number
-    };
+      tel: tel,
+    });
 
-    // Get a reference to the 'users' path in the database
-    const usersRef = firebase.database().ref('users');
-
-    // Push the new data to the database with a unique key
-    usersRef.push(newData);
-
-    // Reset the form fields after successful submission
+   
     setName('');
     setAddress('');
     setTel('');
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label>Name:</label>
-        <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
-      </div>
-      <div>
-        <label>Email:</label>
-        <input type="text" value={address} onChange={(e) => setAddress(e.target.value)} />
-      </div>
-      <div>
-        <label>Age:</label>
-        <input type="number" value={tel} onChange={(e) => setTel(e.target.value)} />
-      </div>
-      <button type="submit">Add Data</button>
+    <form onSubmit={handleFormSubmit}>
+      <label htmlFor="name">Name:</label>
+      <input type="text" id="name" value={name} onChange={(e) => setName(e.target.value)} required />
+
+      <label htmlFor="address">Address:</label>
+      <input type="text" id="address" value={address} onChange={(e) => setAddress(e.target.value)} required />
+
+      <label htmlFor="tel">Tel:</label>
+      <input type="number" id="tel" value={tel} onChange={(e) => setTel(e.target.value)} required />
+
+      <button type="submit">Submit</button>
     </form>
   );
 };
