@@ -3,18 +3,14 @@ import picture from "../images/material-symbols_search.svg";
 import picture2 from "../images/Rectangle-57.png";
 import picture3 from "../images/Rectangle-58.svg";
 import picture4 from "../images/Rectangle-59.png";
-import picture5 from "../images/Rectangle-60.png"
+import picture5 from "../images/Rectangle-60.png";
+import GetHospital from "./GetHospital.jsx";
 
 export default function FindHospital(){
   return(
     <>
       <div>
-        <div className="hospital--search-container">
-          <div className="hospital--search-field">
-            <input type="text" className="hospital--search-input"></input>
-            <img src={picture} className="search--icon" alt="search-icon"></img>
-          </div>
-        </div>
+        <GetHospital/>
 
         <div className="hospital--second-section">
           <div>
