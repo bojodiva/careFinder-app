@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
-import {auth} from "../components/firebase";
-import picture1 from "../images/carefinder-logo2.png";
+import {auth} from "./firebase";
+import picture from "./images/Rectangle-113.png";
+import picture1 from "./images/carefinder-logo2.png";
 import {NavLink, useNavigate} from "react-router-dom";
+import LoadingSpinner from "./LoadingSpinner"
 
 export default function SignUp() {
   const [user, setUser] = useState({
@@ -11,6 +13,7 @@ export default function SignUp() {
     password: ""
   });
   const [errors, setErrors] = useState({});
+   const [isLoading, setIsLoading] = useState(false)
   
   const navigate = useNavigate();
   
@@ -18,21 +21,35 @@ export default function SignUp() {
     event.preventDefault();
     const { email, password, userName } = user; 
 
+   setIsLoading(true)
+
     createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredentials) => {    
-        const user = userCredentials.user;
-  
-        return user.updateProfile({
-          displayName: userName, 
-        });
-      })
-      .then(() => {
-        console.log('User signed up successfully with display name:', userName); 
-        navigate("/")
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+      .then((userCredentials) => {console.log(userCredentials);
+                                console.log('Redirecting to the home page...');
+                                navigate("/newhome");
+                               })
+    .catch((error) => {
+      console.log(error)
+       let errorMessage = "An unknown error occurred. Please try again.";
+
+      if (error.code === "auth/user-not-found") {
+        errorMessage = "User not found. Please check your email and try again.";
+      } else if (error.code === "auth/wrong-password") {
+        errorMessage = "Incorrect password. Please check your password and try again.";
+      } else if (error.code === "auth/invalid-email") {
+        errorMessage = "Invalid email. Please provide a valid email address.";
+      }
+
+      setErrors({ login: errorMessage });
+                      })
+   .finally(() => {
+      setIsLoading(false);
+    setUser({
+      userName: "",
+      email: "",
+      password: "",
+    })
+    });
   }
 
 
@@ -114,8 +131,11 @@ export default function SignUp() {
       <input type="password" placeholder="Enter your password" value={user.password} onChange={handlePasswordChange} />
         {errors.password && <span className="error--span">{errors.password}</span>}
         </div>
+          {errors.login && <span className="error--span">{errors.login}</span>}
         <div className="form--group">
-      <button type="submit" className="btn--submit" disabled={!isFormValid}>Sign Up</button>
+      <button type="submit" className="btn--submit" disabled={!isFormValid && isLoading}>
+        {isLoading ? <LoadingSpinner/> : "SignUp"}
+      </button>
         </div>
         <p className="account--already">Already have an account? <NavLink className="login--nav-link" to="/login">Login!</NavLink></p>
       </form>
@@ -123,7 +143,7 @@ export default function SignUp() {
       
          <div className="left--container">
            <div className='nav-logo'>
-               <img src={picture1} className="logo" alt="logo"></img>
+               <img src={picture1} className="logo"></img>
              <h2 className='logo--name'>CareFinder</h2>
            </div>
           <div className='left--remains'>
