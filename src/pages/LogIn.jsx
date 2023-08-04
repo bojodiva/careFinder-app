@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { signInWithEmailAndPassword } from 'firebase/auth';
-import {auth} from "../components/firebase";
-import picture1 from "../images/carefinder-logo2.png";
+import {auth} from "./firebase";
+// import picture from "./images/Rectangle-113.png";
+import picture1 from "./images/carefinder-logo2.png";
 import {NavLink, useNavigate} from "react-router-dom";
+import LoadingSpinner from "./LoadingSpinner";
 
 
 
@@ -13,23 +15,43 @@ export default function LogIn() {
     password: ""
   });
   const [errors, setErrors] = useState({});
+  const [isLoading, setIsLoading] = useState(false)
  
   const navigate = useNavigate();
 
   const logIn = (event) => {
     event.preventDefault();
+
+    setIsLoading(true)
+    
     signInWithEmailAndPassword(auth, user.email, user.password)
     .then((userCredentials) => {console.log(userCredentials);
                                 console.log('Redirecting to the home page...');
                                 navigate("/newhome");
                                })
-    .catch((error) => {console.log(error)})
+    .catch((error) => {
+      console.log(error)
+       let errorMessage = "An unknown error occurred. Please try again.";
 
+      if (error.code === "auth/user-not-found") {
+        errorMessage = "User not found. Please check your email and try again.";
+      } else if (error.code === "auth/wrong-password") {
+        errorMessage = "Incorrect password. Please check your password and try again.";
+      } else if (error.code === "auth/invalid-email") {
+        errorMessage = "Invalid email. Please provide a valid email address.";
+      }
+
+      setErrors({ login: errorMessage });
+                      })
+   .finally(() => {
+      setIsLoading(false);
     setUser({
       userName: "",
-      emails: "",
+      email: "",
       password: "",
     })
+    });
+
   }
 
   function handlePasswordChange(event) {
@@ -109,8 +131,11 @@ const isFormValid = !errors.password && !errors.email;
       <input type="password" placeholder="Enter your password" value={user.password} onChange={handlePasswordChange} />
         {errors.password && <span className="error--span">{errors.password}</span>}
         </div>
+          {errors.login && <span className="error--span">{errors.login}</span>}
         <div className="form--group">
-      <button type="submit" className="btn--submit" disabled={!isFormValid}>Log In</button>
+      <button type="submit" className="btn--submit" disabled={!isFormValid && isLoading}>
+        {isLoading ? <LoadingSpinner/> : "LogIn"}
+      </button>
         </div>
         <p className="account--already">Don't have an account? <NavLink className="login--nav-link" to="/signup">Signup!</NavLink></p>
       </form>
@@ -118,7 +143,7 @@ const isFormValid = !errors.password && !errors.email;
      
         <div className="left--container">
            <div className='nav-logo'>
-             <img src={picture1} className="logo" alt="logo"></img>
+             <img src={picture1} className="logo"></img>
              <h2 className='logo--name'>CareFinder</h2>
            </div>
           <div className='left--remains'>
@@ -134,3 +159,7 @@ const isFormValid = !errors.password && !errors.email;
      
     </div>
         )};
+
+
+
+    
