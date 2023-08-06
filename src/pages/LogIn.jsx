@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { signInWithEmailAndPassword } from 'firebase/auth';
-import {auth} from "./firebase";
+import {auth} from "../components/firebase";
 // import picture from "./images/Rectangle-113.png";
-import picture1 from "./images/carefinder-logo2.png";
+import picture1 from "../images/carefinder-logo2.png";
 import {NavLink, useNavigate} from "react-router-dom";
-import LoadingSpinner from "./LoadingSpinner";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 
 
@@ -25,10 +25,11 @@ export default function LogIn() {
     setIsLoading(true)
     
     signInWithEmailAndPassword(auth, user.email, user.password)
-    .then((userCredentials) => {console.log(userCredentials);
-                                console.log('Redirecting to the home page...');
-                                navigate("/newhome");
-                               })
+    .then((userCredentials) => {
+      console.log(userCredentials);
+      console.log('Redirecting to the home page...');
+      navigate("/newhome");
+    })
     .catch((error) => {
       console.log(error)
        let errorMessage = "An unknown error occurred. Please try again.";
@@ -42,7 +43,7 @@ export default function LogIn() {
       }
 
       setErrors({ login: errorMessage });
-                      })
+   })
    .finally(() => {
       setIsLoading(false);
     setUser({

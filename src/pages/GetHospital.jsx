@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import SearchHospitals from './SearchHospitals';
+import SearchHospital from './SearchHospital';
 
 export default function GetHospitals(){
   const [searchResults, setSearchResults] = useState([]);
@@ -10,7 +10,7 @@ export default function GetHospitals(){
 
   return (
     <div>
-      <SearchHospitals onSearch={handleSearchResults} />
+      <SearchHospital onSearch={handleSearchResults} />
      
       <ul>
         {searchResults.map((result) => (

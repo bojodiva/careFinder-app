@@ -1,5 +1,4 @@
 import React from "react";
-import picture from "../images/material-symbols_search.svg";
 import picture2 from "../images/Rectangle-57.png";
 import picture3 from "../images/Rectangle-58.svg";
 import picture4 from "../images/Rectangle-59.png";

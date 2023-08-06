@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
-import {auth} from "./firebase";
-import picture from "./images/Rectangle-113.png";
-import picture1 from "./images/carefinder-logo2.png";
+import {auth} from "../components/firebase";
+// import picture from "./images/Rectangle-113.png";
+import picture1 from "../images/carefinder-logo2.png";
 import {NavLink, useNavigate} from "react-router-dom";
-import LoadingSpinner from "./LoadingSpinner"
+import LoadingSpinner from "../components/LoadingSpinner"
 
 export default function SignUp() {
   const [user, setUser] = useState({

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { ref, onValue } from 'firebase/database';
-import {database} from "./firebase"
+import {database} from "../components/firebase";
+import picture from "../images/material-symbols_search.svg";
 
 export default function SearchHospitals({ onSearch }) {
   const [hospitals, setHospitals] = useState([]);
@@ -36,75 +37,7 @@ export default function SearchHospitals({ onSearch }) {
     <>
               <div className="hospital--search-container">
           <div className="hospital--search-field">
-            <input type="text" className="hospital--search-input" value={searchTerm} onChange={(
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-               e) => setSearchTerm(e.target.value)}></input>
+            <input type="text" className="hospital--search-input" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)}></input>
             <img src={picture} className="search--icon" alt="search-icon" onClick={handleSearch}></img>
           </div>
         </div>
