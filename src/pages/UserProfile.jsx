@@ -26,7 +26,11 @@ export default function UserProfile() {
         <div className="profile--container">
         <div className="profile--links">
           <div>
-          <NavLink to="/profile/user" className="profile--link">Profile</NavLink>
+          <NavLink to="/profile/user" className="profile--link">Profile Details</NavLink>
+          <NavLink className="profile--link">Find Hospital</NavLink>
+          <NavLink className="profile--link">Book An Appointment</NavLink>
+          <NavLink className="profile--link">Home</NavLink>
+          <NavLink className="profile--link">Library</NavLink>
           <NavLink to="/profile/add-hospital" className="profile--link">Add Hospital</NavLink>
             </div>
         </div>

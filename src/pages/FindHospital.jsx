@@ -4,10 +4,13 @@ import picture3 from "../images/Rectangle-58.svg";
 import picture4 from "../images/Rectangle-59.png";
 import picture5 from "../images/Rectangle-60.png";
 import GetHospital from "./GetHospital.jsx";
+import NavBar from "../components/NavBar.jsx";
+import Footer from "../components/Footer.jsx";
 
 export default function FindHospital(){
   return(
     <>
+    <NavBar/>
       <div>
         <GetHospital/>
 
@@ -41,6 +44,7 @@ export default function FindHospital(){
           </div>
         </div>
       </div>
+      <Footer/>
     </>
   )
 }

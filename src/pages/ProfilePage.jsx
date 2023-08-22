@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { auth, storage } from './firebase';
-import UserSignOut from "./UserSignOut"
+import { auth } from './components/firebase';
+import UserSignOut from "./components/UserSignOut";
+import LoadingSpinner from './components/LoadingSpinner';
 
 export default function ProfilePage(){
    const [userProfile, setUserProfile] = useState(null);
+  const [name, setName] = useState("");
+  // const [email, setEmail] = useState("");
+  const [address, setAddress] = useState("");
 
   useEffect(() => {
     fetchUserProfile();
@@ -13,10 +17,8 @@ export default function ProfilePage(){
     const currentUser = auth.currentUser;
 
     if (currentUser) {
-      const { displayName, email, uid } = currentUser;
-      const userName = displayName || "N/A";
+      const { email, uid } = currentUser;
       setUserProfile({
-        displayName: userName,
         email: email,
         uid: uid,
       });
@@ -24,22 +26,49 @@ export default function ProfilePage(){
       console.log('User not logged in.');
     }
   };
+
+  const handleFormSave = (e) => {
+    e.preventDefault();
+
+    const NewName = e.target.elements.name.value;
+    const NewAddress = e.target.elements.address.value
+    setName(NewName);
+    setAddress(NewAddress);
+  }
   
   return(
     <>
       <div>
-         <div>
-      <h1>User Profile</h1>
+         <div className='user--profile'>
+      <h1>Profile Details</h1>
       {userProfile ? (
         <div>
-          <p>Username: {userProfile.userName}</p>
           <p>Email: {userProfile.email}</p>
         </div>
       ) : (
-        <p>Loading user profile...</p>
+        <LoadingSpinner/>
       )}
     </div>
         <div>
+          <div>
+             <form onSubmit={handleFormSave} className="form">
+      <div className="form--group">
+      <label htmlFor="name">Name:</label>
+      <input type="text" id="name" value={name} onChange={(e) => setName(e.target.value)} placeholder="Enter your name" required />
+</div>
+      <div className="form--group">
+      <label htmlFor="email">Email:</label>
+      <input type="text" id="email" value={userProfile?.email || ""} disabled/>
+</div>
+      <div className="form--group">
+      <label htmlFor="address">Address:</label>
+      <input type="text" id="address" value={address} onChange={(e) => setAddress(e.target.value)} placeholder="Enter your address" required />
+</div>
+      <div className="form--group">
+      <button type="submit" className="btn--submit">Save</button>
+        </div>
+    </form>
+          </div>
           <UserSignOut/>
         </div>
       </div>

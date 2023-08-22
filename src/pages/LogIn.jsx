@@ -144,7 +144,7 @@ const isFormValid = !errors.password && !errors.email;
      
         <div className="left--container">
            <div className='nav-logo'>
-             <img src={picture1} className="logo"></img>
+             <img src={picture1} className="logo" alt="logo"></img>
              <h2 className='logo--name'>CareFinder</h2>
            </div>
           <div className='left--remains'>

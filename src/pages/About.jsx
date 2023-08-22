@@ -2,10 +2,13 @@ import React from "react";
 import picture from "../images/Rectangle-7.png";
 import picture2  from "../images/Rectangle-8.png";
 import {NavLink} from 'react-router-dom';
+import NavBar from "../components/NavBar.jsx";
+import Footer from "../components/Footer.jsx";
 
 export default function About(){
   return(
     <>
+    <NavBar/>
    <div className="about--section">
      <div className="about--photos-container">
        <div>
@@ -25,6 +28,7 @@ export default function About(){
          </div>
      </div>
    </div>
+   <Footer/>
     </>
   )
 }

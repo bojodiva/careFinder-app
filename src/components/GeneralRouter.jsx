@@ -5,17 +5,17 @@ import About from "../pages/About";
 import FindHospital from "../pages/FindHospital";
 import LogIn from "../pages/LogIn";
 import SignUp from "../pages/SignUp"
-import NavBar from "./NavBar";
-import Footer from "./Footer";
+// import NavBar from "./NavBar";
+// import Footer from "./Footer";
 
 
 export default function GeneralRouter(){
-    const currentPath = window.location.pathname;
+    // const currentPath = window.location.pathname;
 
   return(
     <>
        <nav>
-        {currentPath !== "/login" && <NavBar/>}
+        {/* {currentPath !== "/login" && <NavBar/>} */}
             <Routes>
                 <Route path="/" element={<LandingPage/>}/>
               
@@ -26,7 +26,7 @@ export default function GeneralRouter(){
                 <Route path="*" element={<h1 className="error--note">Not Found</h1>}/>
           </Routes>
 
-          {currentPath !== "/login" && <Footer/>}
+          {/* {currentPath !== "/login" && <Footer/>} */}
         </nav>
     </>
   )

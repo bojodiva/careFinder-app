@@ -7,6 +7,7 @@ import { getStorage } from "firebase/storage";
 const firebaseConfig = {
   apiKey: "AIzaSyBsCIU9fJnQPgd62W804xFItCVwWR7tg4g",
   authDomain: "authentication-57736.firebaseapp.com",
+  databaseURL: "https://authentication-57736-default-rtdb.europe-west1.firebasedatabase.app",
   projectId: "authentication-57736",
   storageBucket: "authentication-57736.appspot.com",
   messagingSenderId: "320972747840",

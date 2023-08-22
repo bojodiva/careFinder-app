@@ -1,16 +1,19 @@
 import React from "react";
-import picture from "../images/background-photo.png"
+// import picture from "../images/background-photo.png"
 import {NavLink} from 'react-router-dom'
 import MoreAbout from "../pages/MoreAbout.jsx";
 import About from "../pages/About.jsx";
 import BookAppointment from "../pages/BookAppointment.jsx";
 import Testimonial from "../pages/Testimonial.jsx";
+import NavBar from "../components/NavBar.jsx";
+import Footer from "../components/Footer";
 
 
 export default function LandingPage(){
 
   return(
     <>
+    <NavBar/>
      <div className="home--container">
        <div className='flex--container'>
        <div className="home--text">
@@ -25,9 +28,9 @@ export default function LandingPage(){
              </div>
        </div>
        </div>
-       <div className="home--background">
+       {/* <div className="home--background">
          <img src={picture} className='photo' alt="care"></img>
-       </div>
+       </div> */}
          </div>
        <div className="search--section">
          <div>
@@ -41,6 +44,7 @@ export default function LandingPage(){
       <MoreAbout/>
       <BookAppointment/>
       <Testimonial/>
+      <Footer/>
     </>
   )
 }

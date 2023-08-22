@@ -12,11 +12,14 @@ export default function GetHospitals(){
     <div>
       <SearchHospital onSearch={handleSearchResults} />
      
-      <ul>
-        {searchResults.map((result) => (
-          <li key={result.id}>{result.name}</li>
-        ))}
-      </ul>
+      <>
+  {searchResults.map((result) => (
+    <ul key={result.name}>
+      <li>{result.name}</li>
+      <li>{result.address}</li>
+     </ul>
+      ))}
+      </>
     </div>
   );
 };
