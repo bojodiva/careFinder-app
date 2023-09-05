@@ -24,19 +24,26 @@ import { database } from '../components/firebase.jsx';
   };
 
   return (
-    <form onSubmit={handleFormSubmit}>
+    <form onSubmit={handleFormSubmit} className="form">
+      <h1 className="add--big-text">Add Hospitals that you know around you.</h1>
+      <div className="form--group">
       <label htmlFor="name">Name:</label>
       <input type="text" id="name" value={name} onChange={(e) => setName(e.target.value)} required />
-
+</div>
+      <div className="form--group">
       <label htmlFor="address">Address:</label>
       <input type="text" id="address" value={address} onChange={(e) => setAddress(e.target.value)} required />
-
+</div>
+      <div className="form--group">
       <label htmlFor="tel">Tel:</label>
       <input type="number" id="tel" value={tel} onChange={(e) => setTel(e.target.value)} required />
-
-      <button type="submit">Submit</button>
+</div>
+      <div className="form--group">
+      <button type="submit" className="btn--submit">Submit</button>
+        </div>
     </form>
   );
 };
 
 export default DataForm;
+

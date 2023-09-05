@@ -1,5 +1,6 @@
 import './NavBar.css';
 import picture from "../images/carefinder-logo2.png";
+import{NavLink} from "react-router-dom";
 
 export default function Footer(){
   return(
@@ -19,9 +20,17 @@ export default function Footer(){
         </div>
         <div>
           <h2 className='link--heading'>Quick Links</h2>
-          <p>My Account</p>
-          <p>Book an Appointment</p>
-          <p>Library</p>
+          <div className='footer--links'>
+            <div>
+          <NavLink to="/signup" className="footer--link">My Account</NavLink>
+          </div>
+          <div>
+          <NavLink to="/about" className="footer--link">About</NavLink>
+          </div>
+          <div>
+          <NavLink to="/search" className="footer--link">Find Hospital</NavLink>
+            </div>
+          </div>
         </div>
       </div>
     </>

@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { auth } from './components/firebase';
-import UserSignOut from "./components/UserSignOut";
-import LoadingSpinner from './components/LoadingSpinner';
+import { auth } from '../components/firebase';
+import UserSignOut from "../components/UserSignOut";
+import LoadingSpinner from '../components/LoadingSpinner';
 
 export default function ProfilePage(){
    const [userProfile, setUserProfile] = useState(null);
   const [name, setName] = useState("");
-  // const [email, setEmail] = useState("");
   const [address, setAddress] = useState("");
 
   useEffect(() => {
@@ -27,13 +26,29 @@ export default function ProfilePage(){
     }
   };
 
+  useEffect(() => {
+    const savedValue1 = localStorage.getItem('name');
+    const savedValue2 = localStorage.getItem('address');
+    
+    if (savedValue1) {
+      setName(savedValue1);
+    }
+    
+    if (savedValue2) {
+      setAddress(savedValue2);
+    }
+  }, []);
+
+
+
   const handleFormSave = (e) => {
     e.preventDefault();
-
-    const NewName = e.target.elements.name.value;
-    const NewAddress = e.target.elements.address.value
-    setName(NewName);
-    setAddress(NewAddress);
+    localStorage.setItem('name', name);
+    localStorage.setItem('address', address);
+    // const NewName = e.target.elements.name.value;
+    // const NewAddress = e.target.elements.address.value
+    // setName(NewName);
+    // setAddress(NewAddress);
   }
   
   return(

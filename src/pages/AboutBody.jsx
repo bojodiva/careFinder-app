@@ -2,16 +2,11 @@ import React from "react";
 import picture from "../images/Rectangle-7.png";
 import picture2  from "../images/Rectangle-8.png";
 import {NavLink} from 'react-router-dom';
- import NavBar from "../components/NavBar.jsx";
-  import NavBar2 from "../components/NavBar2.jsx";
- import Footer from "../components/Footer.jsx";
- import AuthCheck from "../components/AuthCheck";
 
 export default function About(){
-  const isLoggedIn = AuthCheck();
   return(
     <>
-    { isLoggedIn ? <NavBar2/> : <NavBar/>}
+  
    <div className="about--section">
      <div className="about--photos-container">
        <div>
@@ -31,7 +26,7 @@ export default function About(){
          </div>
      </div>
    </div>
-   <Footer/>
+
     </>
   )
 }

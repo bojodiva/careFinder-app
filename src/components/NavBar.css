@@ -17,6 +17,7 @@
   
   .logo{
     width: 45px;
+    cursor: pointer;
   }
   
   .logo--name{
@@ -46,46 +47,116 @@
   }
   
   .log--in{
-    text-align: center;
-    padding: 10px 10px;
-    background: #10949e;
-    color: white;
-    border-radius: 10px;
+     text-align: center;
+     padding: 10px 10px;
+    border-radius: 10px; 
+    color: rgb(43, 41, 41);
     text-decoration: none;
+    border: 0.2px solid rgb(128, 126, 126);
   }
   
   .sign--up{
     text-align: center;
     padding: 10px 10px;
-    background: #10949e;
+    background-color: #10949e;
     color: white;
      border-radius: 10px;
     text-decoration: none;
   }
   
+  .sign--up:hover{
+    background-color: #1a5257;
+  }
   
   /* footer styling */
   
   .footer--section{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-  place-items: center;
+    place-items: center;
     text-align: center;
     background: #edfcfd;
     height: 500px;
-    margin-top: 20px;
+    margin-top: 80px;
   }
   
   .logo2{
     width: 45px;
-    background: #a0e8ee;
-    border-radius: 70px;
   }
   
   .link--heading{
-    color: #10949e;
-    font-size: 22px;
+    color: black;
+    font-size: 20px;
     margin-bottom: 20px;
   }
-  
- 
+
+  .footer--links{
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 10px;
+  }
+
+  .footer--link{
+    text-decoration: none;
+    font-size: 16px;
+    color: black;
+  }
+
+  .footer--link:hover{
+    text-decoration: 2px underline #10949e;
+  }
+
+
+  /* navbar2 styling */
+ .navbar--section{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin: 20px;
+  gap: 40px;
+}
+
+.nav--logo{
+  display: flex;
+  margin-left: 50px;
+  margin: 0;
+  margin-top: 0;
+}
+
+.logo{
+  width: 45px;
+}
+
+.image--container{
+  display: flex;
+  flex: 1;
+  align-items: flex-end;
+   flex-direction: column;
+}
+
+.avatar{
+  width: 45px;
+  border-radius: 50px;
+}
+.avatar:hover{
+  border-radius: 60px;
+}
+
+
+.logo--name{
+  font-size: 30px;
+  /* color: #0c7179; */
+  margin-top: 5px;
+}
+
+.nav--links{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  white-space: nowrap;
+  gap: 10px;
+  margin: 8px;
+  text-align: center;
+}
+
+.nav--link{
+  text-decoration: none;
+}
