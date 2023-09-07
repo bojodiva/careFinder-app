@@ -26,6 +26,7 @@ export default function NavBar(){
         <NavLink to="/" style={navLinkStyle} className='nav--link'>Home</NavLink>
         <NavLink to="/about" style={navLinkStyle} className='nav--link'>About</NavLink>
         <NavLink to="/search" style={navLinkStyle} className='nav--link'>Find Hospital</NavLink>
+        <NavLink to="/blog" style={navLinkStyle} className="nav--link">Blog</NavLink>
       </div>
 
       <div className='nav--buttons'>

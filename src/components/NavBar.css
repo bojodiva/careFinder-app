@@ -29,9 +29,9 @@
   
   .nav--links{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     white-space: nowrap;
-    gap: 10px;
+    gap: 5px;
     margin: 8px;
     text-align: center;
   }
@@ -67,6 +67,7 @@
   .sign--up:hover{
     background-color: #1a5257;
   }
+
   
   /* footer styling */
   
@@ -150,7 +151,7 @@
 
 .nav--links{
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   white-space: nowrap;
   gap: 10px;
   margin: 8px;

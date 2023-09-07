@@ -13,6 +13,7 @@ import BookAppointment from "../pages/BookAppointment";
 import Library from "../pages/Library";
 import { DataProvider } from "./DataContext";
 import NotFoundPage from "./404Page";
+import HospitalMarkdownEditor from "../pages/Markdown";
 
 
 export default function GeneralRouter(){
@@ -36,6 +37,7 @@ export default function GeneralRouter(){
                 <Route path="/search/individual/:id" element={<IndividualHospital/>} />
                 <Route path="/login" element={<LogIn/>}/>
                 <Route path="/signup" element={<SignUp/>}/>
+                <Route path="/blog" element={<HospitalMarkdownEditor/>}/>
                 <Route path="*" element={<NotFoundPage />}/>
           </Routes>
                 </DataProvider>

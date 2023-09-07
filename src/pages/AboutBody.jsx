@@ -22,7 +22,7 @@ export default function About(){
        <h1 className="special--name">CareFinder</h1>
        <p className="about--paragraph">Carefinder is a platform where users can search for hosiptals in their areas, export hospital details for your records and enhance your healthcare experience by connecting with others and sharing valuable resources.</p>
          
-        <h2 className='about--link-container'> <NavLink className='about--link'>Our Services</NavLink></h2>
+        <h2 className='about--link-container'> <NavLink to="/search" className='about--link'>Our Services</NavLink></h2>
          </div>
      </div>
    </div>

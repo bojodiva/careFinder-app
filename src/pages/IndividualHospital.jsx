@@ -2,19 +2,18 @@ import React, { useState, useEffect } from 'react';
 import { useParams, NavLink, useNavigate} from 'react-router-dom';
 import { ref, get } from 'firebase/database';
 import { database } from '../components/firebase';
-// import GetHospitalImage from '../components/GetHospitalImage';
 import picture3 from "../images/Rectangle-67.jpg"
 import picture1 from "../images/mingcute_save-line.svg";
 import picture2 from "../images/ph_share-bold.svg";
-// import imageFile from '../imageData';
 import picture from "../images/star-icon.svg";
 import picture4 from "../images/check--logo.png";
 import {useData} from "../components/DataContext";
 import AuthCheck from '../components/AuthCheck';
+import Papa from "papaparse";
 
 
 
-function IndividualPage() {
+export default function IndividualPage() {
   const isLoggedIn = AuthCheck();
   const navigate = useNavigate()
   const { id } = useParams(); 
@@ -23,13 +22,14 @@ function IndividualPage() {
   const [hospitalData, setHospitalData] = useState(null);
   const [submitted, setSubmitted] = useState(false);
 
+  
   useEffect(() => {
     const hospitalRef = ref(database, `hospitals/${id}`);
 
     get(hospitalRef)
-      .then((snapshot) => {
+    .then((snapshot) => {
         console.log('Fetched document data:', snapshot.val());
-
+        
         if (snapshot.exists()) {
           setHospitalData(snapshot.val());
         } else {
@@ -45,11 +45,26 @@ function IndividualPage() {
     return <div>No such document!</div>;
   }
 
-  // const randomIndex = Math.floor(Math.random() * imageFile.length);
-  // const randomImageSrc = imageFile[randomIndex];
+
+  const csvData = [
+    { name: hospitalData.name, address: hospitalData.address, tel: hospitalData.tel },
+  ];
 
 
-
+  const downloadCSV = () => {
+    const csv = Papa.unparse(csvData);
+    const blob = new Blob([csv], { type: 'text/csv' });
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.style.display = 'none';
+    a.href = url;
+    a.download = 'data.csv';
+    document.body.appendChild(a);
+    a.click();
+    window.URL.revokeObjectURL(url);
+    document.body.removeChild(a);
+  };
+  
   const handleSave = () => {
     if(!isLoggedIn){
       navigate("/signup");
@@ -78,7 +93,7 @@ function IndividualPage() {
        <div className='icon--container'>
         <img src={picture} className='star--icon' alt="icon"></img>
       <img src={picture1} className="user--icon" onClick={handleSave} alt="icon"></img>
-      <img src={picture2} className="user--icon" alt="icon"></img>
+      <img src={picture2} className="user--icon" onClick={downloadCSV} alt="icon"></img>
       </div>
     </div>
     <div className='form--container'>
@@ -118,4 +133,4 @@ function IndividualPage() {
   );
 }
 
-export default IndividualPage;
+

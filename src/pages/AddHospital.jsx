@@ -2,16 +2,18 @@ import React, { useState } from 'react';
 import { ref, push } from 'firebase/database';
 import { database } from '../components/firebase.jsx';
 
+
  const DataForm = () => {
   const [name, setName] = useState('');
   const [address, setAddress] = useState('');
   const [tel, setTel] = useState('');
+ 
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
 
      const hospitalsRef = ref(database, 'hospitals');
-  push(hospitalsRef, {
+     push(hospitalsRef, {
       name: name,
       address: address,
       tel: tel,
@@ -23,7 +25,12 @@ import { database } from '../components/firebase.jsx';
     setTel('');
   };
 
+  
+
+
   return (
+    <>
+    <div>
     <form onSubmit={handleFormSubmit} className="form">
       <h1 className="add--big-text">Add Hospitals that you know around you.</h1>
       <div className="form--group">
@@ -42,6 +49,12 @@ import { database } from '../components/firebase.jsx';
       <button type="submit" className="btn--submit">Submit</button>
         </div>
     </form>
+
+   
+   
+    
+    </div>
+    </>
   );
 };
 
