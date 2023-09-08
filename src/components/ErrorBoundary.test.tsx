@@ -15,7 +15,7 @@ describe('ErrorBoundary', () => {
   });
 
   it('should render an error message when an error occurs', () => {
-    // Mock console.log to avoid unnecessary console output in tests
+    
     const originalConsoleLog = console.log;
     console.log = jest.fn();
 

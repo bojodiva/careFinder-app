@@ -1,6 +1,5 @@
 import React from 'react';
 import {Outlet, NavLink} from "react-router-dom"
-// import { ref, uploadBytes, getDownloadURL } from "firebase/storage"
 import picture from "../images/carefinder-logo.png";
 import picture1 from "../images/avatar--profile.png";
 

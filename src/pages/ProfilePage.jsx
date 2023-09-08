@@ -45,10 +45,6 @@ export default function ProfilePage(){
     e.preventDefault();
     localStorage.setItem('name', name);
     localStorage.setItem('address', address);
-    // const NewName = e.target.elements.name.value;
-    // const NewAddress = e.target.elements.address.value
-    // setName(NewName);
-    // setAddress(NewAddress);
   }
   
   return(
