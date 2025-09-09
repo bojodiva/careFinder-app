@@ -30,7 +30,7 @@ CareFinder is a web application that helps users easily search, explore, and con
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/carefinder-app.git  
+git clone https://github.com/bojodiva/carefinder-app.git  
 
 # Navigate into the project directory
 cd carefinder-app  
@@ -42,16 +42,12 @@ npm install
 npm run dev
 ```
 
-Open the app in your browser at: [Carefinder App](authentication-57736.web.app/)
 
 ##  Usage
-Use the search bar on the homepage to find hospitals
-
-Click "See More" to view hospital details on an individual page
-
-Sign up or log in to access features like hiring professionals, posting jobs, and interacting on the blog
-
-Explore businesses and professionals through a structured and user-friendly interface
+- Use the search bar on the homepage to find hospitals
+- Click "See More" to view hospital details on an individual page
+- Sign up or log in to access features like hiring professionals, posting jobs, and interacting on the blog
+- Explore businesses and professionals through a structured and user-friendly interface
 
 
 ## 📂 Code Structure
@@ -65,4 +61,5 @@ src/
 ```
 
 
+Open the app in your browser at: [Carefinder App](authentication-57736.web.app/)
 
