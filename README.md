@@ -30,7 +30,7 @@ CareFinder is a web application that helps users easily search, explore, and con
 
 ```bash
 # Clone the repository
-git clone https://github.com/bojodiva/carefinder-app.git  
+git clone https://github.com/bojodiva/careFinder-app.git  
 
 # Navigate into the project directory
 cd carefinder-app  
